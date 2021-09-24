@@ -25,7 +25,6 @@ function determineOwnerFromUrl(url) {
   return null;
 }
 
-
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     switch (request.directive) {
@@ -33,18 +32,18 @@ chrome.runtime.onMessage.addListener(
         getCurrentTab().then(tab => {
           const owner = determineOwnerFromUrl(tab.url);
           if (owner) {
+            // todo - add a callback to this if it exists, in general find out a way to know whens it's done to prevent spamming of the plugin
+            // also means we need to lock it in the popup
             chrome.scripting.executeScript({
               target: {tabId: tab.id},
               files: [`handlers/${owner}.js`]
             });
           }
         });
-
         sendResponse({}); // sending back empty response to sender
         break;
       default:
-        // helps debug when request directive doesn't match
-        alert("Unmatched request of '" + request + "' from script to background.js from " + sender);
+        break;
     }
   }
 );
