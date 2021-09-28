@@ -9,7 +9,7 @@
   },
   "host_permissions": [
     "https://*.americanexpress.com/offers/eligible*",
-    "https://*.chase.com/*",
+    "https://*.chase.com/*"
   ],
   "action": {
     "default_popup": "popup.html"

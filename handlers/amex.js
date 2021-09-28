@@ -1,3 +1,11 @@
+function getArrayByTagNameObject(obj, name) {
+  return new Array(...obj.getElementsByTagName(name));
+}
+
+function getArrayByTagName(name) {
+  return getArrayByTagNameObject(document, name);
+}
+
 function activateRewards() {
   const buttons = getArrayByTagName("button");
 
