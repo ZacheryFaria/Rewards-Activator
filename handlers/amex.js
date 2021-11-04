@@ -25,7 +25,7 @@ function activateRewards() {
   for (const i in buttonsToClick) {
     setTimeout(() => {
       buttonsToClick[i].click();
-    }, 5000 * i);
+    }, 3000 * i);
   }
 }
 
